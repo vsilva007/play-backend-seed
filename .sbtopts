@@ -1,0 +1,5 @@
+-J-Xms512m
+-J-Xmx1024m
+-J-XX:-UseGCOverheadLimit
+-J-Dplay.server.akka.requestTimeout=300s
+-J-Dplay.server.http.idleTimeout=300s

@@ -1,0 +1,10 @@
+[
+  {"id": 0, "name": "new"},
+  {"id": 1, "name": "assigned"},
+  {"id": 2, "name": "completed"},
+  {"id": 4, "name": "error"},
+  {"id": 5, "name": "planified"},
+  {"id": 7, "name": "locked"},
+  {"id": 8, "name": "expired"},
+  {"id": 9, "name": "cancelled"}
+]

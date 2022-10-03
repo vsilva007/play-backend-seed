@@ -1,0 +1,5 @@
+[
+  {"id": 0, "name": "STATUS_REVIEW_PENDING"},
+  {"id": 1, "name": "STATUS_REVIEW_OK"},
+  {"id": -1, "name": "STATUS_REVIEW_KO"}
+]

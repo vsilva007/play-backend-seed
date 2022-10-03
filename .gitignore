@@ -1,0 +1,9 @@
+logs
+project/project
+target
+.g8
+.gradle
+.DS_Store
+.idea
+build
+gradle

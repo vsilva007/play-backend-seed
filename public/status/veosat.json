@@ -1,0 +1,6 @@
+[
+  {"id": 1, "name": "STATUS_VALID"},
+  {"id": -3, "name": "STATUS_NODELIVERYNOTE"},
+  {"id": -2, "name": "STATUS_BADTRUCK"},
+  {"id": -1, "name": "STATUS_ERROR"}
+]

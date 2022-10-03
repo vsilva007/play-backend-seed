@@ -1,0 +1,138 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Map static resources from the /public folder to the /assets URL path
++unsecure
+GET           /assets/*file                                      controllers.Assets.versioned(path="/public", file: Asset)
++unsecure
+GET           /status/*file                                      controllers.Assets.versioned(path="/public/status", file: Asset)
++unsecure
+GET           /permission/*file                                  controllers.Assets.versioned(path="/public/permissions", file: Asset)
++unsecure
+GET           /constants/*file                                   controllers.Assets.versioned(path="/public/constants", file: Asset)
+
+#FILE
++unsecure
+POST          /file/:append                                      controllers.FileController.create(append: Boolean)
++unsecure
+GET           /process/:tolerance                                controllers.FileController.process(tolerance: java.lang.Integer, reprocess: java.lang.Integer ?= 0)
+
+#LOCK
++unsecure
+GET           /lock                                              controllers.LockController.findAll()
+
+#USER
++unsecure
+GET           /user                                              controllers.UserController.findAll()
++unsecure
+GET           /userForBase/:baseId                               controllers.UserController.findAllForBase(baseId: java.util.UUID)
++unsecure
+GET           /driver                                            controllers.UserController.findDrivers()
++unsecure
+GET           /user/:id                                          controllers.UserController.find(id: java.util.UUID)
++unsecure
+GET           /user/refresh/:id                                  controllers.UserController.refresh(id: java.util.UUID)
++unsecure
+POST          /user                                              controllers.UserController.create()
++unsecure
+PUT           /user                                              controllers.UserController.update()
++unsecure
+POST          /login                                             controllers.UserController.login()
++unsecure
+DELETE        /user/:id                                          controllers.UserController.delete(id: java.util.UUID)
+
+#ROLE
++unsecure
+GET           /role                                              controllers.RoleController.findAll()
++unsecure
+GET           /role/:id                                          controllers.RoleController.find(id: java.util.UUID)
++unsecure
+POST          /role                                              controllers.RoleController.create()
++unsecure
+PUT           /role                                              controllers.RoleController.update()
++unsecure
+DELETE        /role/:id                                          controllers.RoleController.delete(id: java.util.UUID)
+
+#PERMISSION
++unsecure
+GET           /permission                                        controllers.PermissionController.findAll()
++unsecure
+GET           /permission/:id                                    controllers.PermissionController.find(id: java.util.UUID)
+
+#CHARGE ORDER
++unsecure
+#GET            /chargeOrder                        controllers.ChargeOrderController.findNoHistorified()
++unsecure
+POST          /chargeOrderHistoryForUser                         controllers.ChargeOrderController.findHistorifiedForUser()
++unsecure
+POST          /chargeOrderForUser                                controllers.ChargeOrderController.findAllForUser()
++unsecure
+GET           /chargeOrder/assignable/:userId                    controllers.ChargeOrderController.findAssignable(userId: java.util.UUID)
++unsecure
+GET           /chargeOrder/:id                                   controllers.ChargeOrderController.find(id: java.util.UUID)
++unsecure
+GET           /chargeOrder/forOrder/:id                          controllers.ChargeOrderController.findWithOrderId(id: java.util.UUID)
++unsecure
+POST          /chargeOrder                                       controllers.ChargeOrderController.create()
++unsecure
+PUT           /chargeOrder                                       controllers.ChargeOrderController.update()
++unsecure
+PUT           /chargeOrder/:id/notes                             controllers.ChargeOrderController.updateNotes(id: java.util.UUID, value: String)
++unsecure
+PUT           /chargeOrder/:id/modality                          controllers.ChargeOrderController.updateModality(id: java.util.UUID, value: String)
++unsecure
+PUT           /chargeOrder/:id/expiration                        controllers.ChargeOrderController.updateExpiration(id: java.util.UUID, value: Long)
++unsecure
+PUT           /chargeOrder/:id/optimal                           controllers.ChargeOrderController.updateOptimal(id: java.util.UUID, value: Long)
++unsecure
+PUT           /chargeOrder/:id/priority                          controllers.ChargeOrderController.updatePriority(id: java.util.UUID, value: Integer)
++unsecure
+PUT           /chargeOrder/:id/prices                            controllers.ChargeOrderController.updatePrices(id: java.util.UUID)
++unsecure
+PUT           /chargeOrder/lock                                  controllers.ChargeOrderController.lock()
++unsecure
+PUT           /chargeOrder/expires                               controllers.ChargeOrderController.expires()
++unsecure
+PUT           /chargeOrder/dehistorize/:id                       controllers.ChargeOrderController.dehistorizes(id: java.util.UUID)
++unsecure
+DELETE        /chargeOrder/:id                                   controllers.ChargeOrderController.delete(id: java.util.UUID)
+
+#INTEGRATION API
++unsecure
+POST          /api/login                                         controllers.LoginController.login()
++unsecure
+POST          /api/token                                         controllers.LoginController.generateIntegrationToken()
++unsecure
+GET           /api/refresh                                       controllers.LoginController.refresh()
++unsecure
+GET           /api/encrypt                                       controllers.LoginController.encryptDbPasswords()
+
++unsecure
+GET           /api/order/:uuid                                   controllers.APIController.getOrder(uuid: String)
+GET           /api/order/month/:offset                           controllers.APIController.getOrderListWithOffset(offset: Integer)
+POST          /api/order                                         controllers.APIController.createOrder()
+DELETE        /api/order                                         controllers.APIController.deleteOrder(uuid: String)
+
+GET           /api/product/:uuid                                 controllers.APIController.getProduct(uuid: String)
+GET           /api/product                                       controllers.APIController.getProductList()
+POST          /api/product                                       controllers.APIController.createProduct()
+DELETE        /api/product                                       controllers.APIController.deleteProduct(uuid: String)
+
+GET           /api/client/:uuid                                  controllers.APIController.getClient(uuid: String)
+GET           /api/client                                        controllers.APIController.getClientList()
+
+GET           /api/cae/:uuid                                     controllers.APIController.getCae(uuid: String)
+GET           /api/cae                                           controllers.APIController.getCaeList()
+POST          /api/cae                                           controllers.APIController.createCae()
+DELETE        /api/cae                                           controllers.APIController.deleteCae(uuid: String)
+
+GET           /api/provider/:uuid                                controllers.APIController.getProvider(uuid: String)
+GET           /api/provider                                      controllers.APIController.getProviderList()
+POST          /api/provider                                      controllers.APIController.createProvider()
+DELETE        /api/provider                                      controllers.APIController.deleteProvider(uuid: String)
+
+GET           /api/terminal/:uuid                                controllers.APIController.getTerminal(uuid: String)
+GET           /api/terminal                                      controllers.APIController.getTerminalList()
+POST          /api/terminal                                      controllers.APIController.createTerminal()
+DELETE        /api/terminal                                      controllers.APIController.deleteTerminal(uuid: String)
